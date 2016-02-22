@@ -11,6 +11,15 @@ public class Calculator {
     }
 
     public int max(int... values) {
-        return NumberUtils.max(values);
+        if (values == null || values.length == 0) {
+        	throw new IllegalArgumentException("Null or empty argument: "+values);
+        };
+        int result = 0;
+        for (int value: values) {
+        	if (value > result) {
+        		result = value;
+        	}
+        }
+        return result;
     }
 }
