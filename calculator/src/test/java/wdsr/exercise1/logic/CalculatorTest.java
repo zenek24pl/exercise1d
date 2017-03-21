@@ -65,7 +65,7 @@ public class CalculatorTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testMax_shouldRaiseAnExceptionForEmptyArgument() {
 		// given
-		int[] values = {2};
+		int[] values = {};
 		
 		// when
 		calculator.max(values);
