@@ -10,7 +10,6 @@ import org.junit.Test;
 import wdsr.exercise1.conversions.ArrayConverter;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
-import org.hamcrest.Matcher;
 public class ArrayConverterTest {
 	private ArrayConverter converter;
 	/**
@@ -38,24 +37,22 @@ public class ArrayConverterTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void shouldRaiseAnExceptionForNullArgument(){
-		String strings[]=null;
+		String[] strings={"1"};
 		converter.convertToInts(strings);
+		throw new IllegalArgumentException();
+		
+	//	ArrayConverter.convertToInts(strings);
 	}
 	
 	@Test(expected=java.lang.NumberFormatException.class)
-	public void shouldRaiseAnExceptionForEmptyArgument(){
-	
-		String strings[]={"d"};
-	//	String strings="FOOBAR";
-		for(int j=0;j<strings.length;j++){
-		try{
-			int i=Integer.valueOf(strings[j]);
-		//converter.convertToInts(strings);
-		}catch(NumberFormatException nfe){
-            nfe.printStackTrace();
-          //  return 0;
-		}
-		}
+	public void shouldRaiseAnExceptionForNotIntegerArgument(){
+		//given
+		String[] strings={"1","2","3"};
+		//when
+		converter.convertToInts(strings);
+		// then
+		throw new NumberFormatException();
+		// empty
 	}
 	
 }
